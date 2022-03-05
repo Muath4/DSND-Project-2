@@ -43,7 +43,7 @@ def index():
     # extract data needed for visuals
     genre_counts = df.groupby('genre').count()['message']
     genre_names = list(genre_counts.index)
-    
+     
     category_counts = (df.iloc[:,4:] == 1).sum().values
     category_names = df.iloc[:,4:].columns
 
