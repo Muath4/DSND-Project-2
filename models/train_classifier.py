@@ -5,7 +5,7 @@ import pickle
 
 from sqlalchemy import create_engine
 from sqlalchemy import inspect
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.pipeline import Pipeline
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from sklearn.multioutput import MultiOutputClassifier
@@ -16,7 +16,6 @@ nltk.download(['punkt', 'wordnet', 'stopwords'])
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 from nltk.corpus import stopwords
-from nltk.stem.porter import PorterStemmer
 
 
 def load_data(database_filepath):
@@ -60,8 +59,6 @@ def tokenize(text):
         
         if tok in stopwords.words("english"):
             continue
-            
-        tok = PorterStemmer().stem(tok)
         
         # Reduce words to their root form
         clean_tok = lemmatizer.lemmatize(tok).lower().strip()

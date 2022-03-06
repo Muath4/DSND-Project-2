@@ -42,6 +42,9 @@ def clean_data(df):
         categories[column] = pd.to_numeric(categories[column], downcast="integer")
     df.drop("categories", 1, inplace = True)
     df = pd.concat([df, categories], axis=1, sort=False)
+    
+    # replcae 2 values with 1's
+    df.replace(to_replace =2,  value =1, inplace=True)
     df.drop_duplicates(inplace=True)
     return df
 
