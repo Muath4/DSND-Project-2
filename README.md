@@ -16,7 +16,6 @@ This is a web application written in python using Flask to classify a text messa
   - InsertDatabaseName.db # database to save clean data to
 - models
   - train_classifier.py
-  - classifier.pkl # saved model
 - README.md
 
 
